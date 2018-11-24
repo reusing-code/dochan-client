@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import DocumentShow from './views/DocumentShow.vue';
+import DocumentList from './views/DocumentList.vue';
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/document',
+      name: 'document-list',
+      component: DocumentList
     },
     {
       path: '/document/:id',

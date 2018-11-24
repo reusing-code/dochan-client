@@ -12,5 +12,8 @@ const apiClient = axios.create({
 export default {
   getDocument(id) {
     return apiClient.get('/documents/' + id);
+  },
+  getDocuments() {
+    return apiClient.get('/documents');
   }
 };

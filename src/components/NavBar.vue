@@ -11,6 +11,9 @@
           <b-link :to="{ name: 'home' }" class="nav-link" exact>Home</b-link> 
         </li>
         <li class="nav-item active-class">
+          <b-link :to="{ name: 'document-list' }" class="nav-link" exact>Documents</b-link>
+        </li>
+        <li class="nav-item active-class">
           <b-link :to="{ name: 'about' }" class="nav-link" exact>About</b-link>
         </li>
       
