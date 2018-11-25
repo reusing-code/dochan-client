@@ -8,9 +8,7 @@
     </template>
     <template v-else="">
       <ul class="list-group">
-        <li v-for="document in documents" :key="document.id" class="list-group-item">
-          <router-link :to="{ name: 'document-show', params: { id: document.id } }">{{document.filename}}</router-link>
-        </li>
+        <DocumentItem v-for="document in documents" :key="document.id" :document="document"/>
       </ul>
     </template>
   </div>
@@ -18,7 +16,10 @@
 
 <script>
 import DocumentService from '@/services/DocumentService.js';
+import DocumentItem from '@/components/DocumentItem.vue';
 export default {
+  name: 'DocumentList',
+  components: { DocumentItem },
   data() {
     return {
       documents: null,
