@@ -13,7 +13,11 @@ export default {
   getDocument(id) {
     return apiClient.get('/documents/' + id);
   },
-  getDocuments() {
-    return apiClient.get('/documents');
+  getDocuments(query) {
+    if (query && query != '') {
+      return apiClient.get('/documents?q=' + query);
+    } else {
+      return apiClient.get('/documents');
+    }
   }
 };

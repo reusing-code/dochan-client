@@ -25,15 +25,26 @@ export default {
       error: null
     };
   },
+  props: ['query'],
   created() {
-    DocumentService.getDocuments()
-      .then(response => {
-        this.documents = response.data;
-      })
-      .catch(error => {
-        this.error = error;
-        console.log('There was an error:', error.response);
-      });
+    this.loadData();
+  },
+  watch: {
+    query: function() {
+      this.loadData();
+    }
+  },
+  methods: {
+    loadData() {
+      DocumentService.getDocuments(this.query)
+        .then(response => {
+          this.documents = response.data;
+        })
+        .catch(error => {
+          this.error = error;
+          console.log('There was an error:', error.response);
+        });
+    }
   }
 };
 </script>

@@ -27,7 +27,14 @@ export default new Router({
     {
       path: '/document',
       name: 'document-list',
-      component: DocumentList
+      component: DocumentList,
+      props: true
+    },
+    {
+      path: '/search/:query',
+      name: 'document-search',
+      component: DocumentList,
+      props: true
     },
     {
       path: '/document/:id',

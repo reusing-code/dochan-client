@@ -38,8 +38,8 @@ export default {
   methods: {
     handleSubmit() {
       this.$router.push({
-        name: 'document-list',
-        query: { q: this.searchQuery }
+        name: 'document-search',
+        params: { query: this.searchQuery }
       });
     }
   }
