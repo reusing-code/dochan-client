@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import DocumentShow from './views/DocumentShow.vue';
 import DocumentList from './views/DocumentList.vue';
+import DocumentSearch from './views/DocumentSearch.vue';
 
 Vue.use(Router);
 
@@ -33,7 +34,7 @@ export default new Router({
     {
       path: '/search/:query',
       name: 'document-search',
-      component: DocumentList,
+      component: DocumentSearch,
       props: true
     },
     {

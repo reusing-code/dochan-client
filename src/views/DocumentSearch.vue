@@ -12,7 +12,7 @@
       </ul>
     </template>
     <template v-else="">
-      No documents available
+      No documents found for: '{{query}}'
     </template>
   </div>
 </template>
@@ -21,7 +21,7 @@
 import DocumentService from '@/services/DocumentService.js';
 import DocumentItem from '@/components/DocumentItem.vue';
 export default {
-  name: 'DocumentList',
+  name: 'DocumentSearch',
   components: { DocumentItem },
   data() {
     return {
@@ -29,6 +29,7 @@ export default {
       error: null
     };
   },
+  props: ['query'],
   created() {
     this.loadData();
   },
@@ -39,7 +40,7 @@ export default {
   },
   methods: {
     loadData() {
-      DocumentService.getDocuments()
+      DocumentService.getDocuments(this.query)
         .then(response => {
           this.documents = response.data;
         })
