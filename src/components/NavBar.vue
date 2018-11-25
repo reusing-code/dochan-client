@@ -19,7 +19,7 @@
       
       </ul>
       <form @submit.prevent="handleSubmit" class="form-inline my-2 my-lg-0">
-        <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input v-model="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -28,10 +28,17 @@
 
 <script>
 export default {
+  data: function() {
+    return {
+      searchQuery: ''
+    };
+  },
   methods: {
     handleSubmit() {
-      var value = document.getElementById('search-input-navbar').value;
-      this.$router.push({ name: 'document-list', query: { q: value } });
+      this.$router.push({
+        name: 'document-list',
+        query: { q: this.searchQuery }
+      });
     }
   }
 };
