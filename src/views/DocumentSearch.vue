@@ -1,5 +1,10 @@
 <template>
   <div>
+    <form class="form-inline" @submit.prevent="handleSubmit">
+      <label class="sr-only" for="inlineFormInputName2">Search</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputSearch" placeholder="Search" v-model="searchInput">
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
     <template v-if="error">
       <div class="alert alert-danger" role="alert">
         Error: no documents found
@@ -26,7 +31,8 @@ export default {
   data() {
     return {
       documents: null,
-      error: null
+      error: null,
+      searchInput: ''
     };
   },
   props: ['query'],
@@ -48,6 +54,12 @@ export default {
           this.error = error;
           console.log('There was an error:', error.response);
         });
+    },
+    handleSubmit() {
+      this.$router.push({
+        name: 'document-search',
+        params: { query: this.searchInput }
+      });
     }
   }
 };
