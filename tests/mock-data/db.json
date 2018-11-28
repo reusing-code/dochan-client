@@ -1,29 +1,33 @@
 {
-    "documents": [
-        {
-            "id": 1,
-            "filename": "scan_001.pdf",
-            "content": "Conten file"
-        },
-        {
-            "id": 2,
-            "filename": "scan_003.pdf",
-            "content": "searchword"
-        },
-        {
-            "id": 3,
-            "filename": "scan_002.pdf",
-            "content": "house dog cat"
-        },
-        {
-            "id": 4,
-            "filename": "invoiceCheck.pdf",
-            "content": "substraction addition"
-        },
-        {
-            "id": 5,
-            "filename": "attachment_2223.pdf",
-            "content": "cat dog fox"
-        }
+  "documents": {
+    "time": "200ms",
+    "count": 5,
+    "results": [
+      {
+        "id": 1,
+        "filename": "scan_001.pdf",
+        "content": "Conten file"
+      },
+      {
+        "id": 2,
+        "filename": "scan_003.pdf",
+        "content": "searchword"
+      },
+      {
+        "id": 3,
+        "filename": "scan_002.pdf",
+        "content": "house dog cat"
+      },
+      {
+        "id": 4,
+        "filename": "invoiceCheck.pdf",
+        "content": "substraction addition"
+      },
+      {
+        "id": 5,
+        "filename": "attachment_2223.pdf",
+        "content": "cat dog fox"
+      }
     ]
+  }
 }

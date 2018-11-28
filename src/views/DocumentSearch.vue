@@ -11,9 +11,10 @@
       </div>
       
     </template>
-    <template v-else-if="documents && documents.length > 0">
+    <template v-else-if="result && result.results && result.results.length > 0">
+      Results: {{result.count}} in {{result.time}}
       <ul class="list-group">
-        <DocumentItem v-for="document in documents" :key="document.id" :document="document"/>
+        <DocumentItem v-for="document in result.results" :key="document.id" :document="document"/>
       </ul>
     </template>
     <template v-else="">
@@ -30,7 +31,7 @@ export default {
   components: { DocumentItem },
   data() {
     return {
-      documents: null,
+      result: null,
       error: null,
       searchInput: ''
     };
@@ -48,7 +49,8 @@ export default {
     loadData() {
       DocumentService.getDocuments(this.query)
         .then(response => {
-          this.documents = response.data;
+          this.result = response.data;
+          this.error = null;
         })
         .catch(error => {
           this.error = error;
