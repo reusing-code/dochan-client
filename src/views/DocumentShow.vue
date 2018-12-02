@@ -34,7 +34,7 @@ export default {
     DocumentService.getDocument(this.id)
       .then(response => {
         this.document = response.data;
-        this.pdfSrc = `http://localhost:8092/api/documents/${this.id}/download`;
+        this.pdfSrc = `/api/documents/${this.id}/download`;
       })
       .catch(error => {
         this.error = error;
