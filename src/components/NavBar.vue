@@ -1,31 +1,28 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <b-link to="/" class="navbar-brand">Dochan</b-link>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <b-navbar toggleable="md" type="light" variant="light">
+    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    <b-navbar-brand to="/">Dochan</b-navbar-brand>
+    <b-collapse is-nav id="nav_collapse">
+      <b-navbar-nav>
+        <b-nav-item :to="{ name: 'home' }">Home</b-nav-item>
+        <b-nav-item :to="{ name: 'document-list' }">Documents</b-nav-item>
+        <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
+      </b-navbar-nav>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active-class">
-          <b-link :to="{ name: 'home' }" class="nav-link" exact>Home</b-link> 
-        </li>
-        <li class="nav-item active-class">
-          <b-link :to="{ name: 'document-list' }" class="nav-link" exact>Documents</b-link>
-        </li>
-        <li class="nav-item active-class">
-          <b-link :to="{ name: 'about' }" class="nav-link" exact>About</b-link>
-        </li>
-      
-      </ul>
-      <form @submit.prevent="handleSubmit" class="form-inline my-2 my-lg-0">
-        <input v-model="searchQuery" class="form-control mr-sm-2" type="search" 
-               placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-form @submit.prevent="handleSubmit">
+          <b-form-input
+            size="sm"
+            class="mr-sm-2"
+            type="text"
+            placeholder="Search"
+            v-model="searchQuery"
+          />
+          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+        </b-nav-form>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </template>
 
 <script>
