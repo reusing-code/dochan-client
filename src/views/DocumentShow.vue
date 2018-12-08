@@ -17,7 +17,7 @@
 
 <script>
 import pdf from 'vue-pdf';
-import DocumentService from '@/services/DocumentService.js';
+import APIService from '@/services/APIService.js';
 export default {
   props: ['id'],
   components: {
@@ -31,7 +31,7 @@ export default {
     };
   },
   created() {
-    DocumentService.getDocument(this.id)
+    APIService.getDocument(this.id)
       .then(response => {
         this.document = response.data;
         this.pdfSrc = `/api/documents/${this.id}/download`;

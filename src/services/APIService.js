@@ -19,5 +19,8 @@ export default {
     } else {
       return apiClient.get('/documents');
     }
+  },
+  getRefuelRecords() {
+    return apiClient.get('/fuel');
   }
 };

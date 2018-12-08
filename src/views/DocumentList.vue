@@ -1,24 +1,19 @@
 <template>
   <div>
     <template v-if="error">
-      <div class="alert alert-danger" role="alert">
-        Error: no documents found
-      </div>
-      
+      <div class="alert alert-danger" role="alert">Error: no documents found</div>
     </template>
     <template v-else-if="documents && documents.length > 0">
       <ul class="list-group">
         <DocumentItem v-for="document in documents" :key="document.id" :document="document"/>
       </ul>
     </template>
-    <template v-else="">
-      No documents available
-    </template>
+    <template v-else>No documents available</template>
   </div>
 </template>
 
 <script>
-import DocumentService from '@/services/DocumentService.js';
+import APIService from '@/services/APIService.js';
 import DocumentItem from '@/components/DocumentItem.vue';
 export default {
   name: 'DocumentList',
@@ -39,7 +34,7 @@ export default {
   },
   methods: {
     loadData() {
-      DocumentService.getDocuments()
+      APIService.getDocuments()
         .then(response => {
           this.documents = response.data;
         })

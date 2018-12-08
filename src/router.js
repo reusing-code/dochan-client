@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import DocumentShow from './views/DocumentShow.vue';
 import DocumentList from './views/DocumentList.vue';
 import DocumentSearch from './views/DocumentSearch.vue';
+import RefuelList from './views/RefuelList.vue';
 
 Vue.use(Router);
 
@@ -41,6 +42,12 @@ export default new Router({
       path: '/document/:id',
       name: 'document-show',
       component: DocumentShow,
+      props: true
+    },
+    {
+      path: '/fuel',
+      name: 'refuel-list',
+      component: RefuelList,
       props: true
     }
   ]

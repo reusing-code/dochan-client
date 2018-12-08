@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import DocumentService from '@/services/DocumentService.js';
+import APIService from '@/services/APIService.js';
 import DocumentItem from '@/components/DocumentItem.vue';
 export default {
   name: 'DocumentSearch',
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     loadData() {
-      DocumentService.getDocuments(this.query)
+      APIService.getDocuments(this.query)
         .then(response => {
           this.result = response.data;
           this.error = null;
