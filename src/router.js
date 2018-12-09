@@ -5,6 +5,7 @@ import DocumentShow from './views/DocumentShow.vue';
 import DocumentList from './views/DocumentList.vue';
 import DocumentSearch from './views/DocumentSearch.vue';
 import RefuelList from './views/RefuelList.vue';
+import RefuelInput from './views/RefuelInput.vue';
 
 Vue.use(Router);
 
@@ -48,6 +49,12 @@ export default new Router({
       path: '/fuel',
       name: 'refuel-list',
       component: RefuelList,
+      props: true
+    },
+    {
+      path: '/fuel/new',
+      name: 'refuel-input',
+      component: RefuelInput,
       props: true
     }
   ]

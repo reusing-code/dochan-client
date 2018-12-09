@@ -7,6 +7,7 @@
         <b-nav-item :to="{ name: 'home' }">Home</b-nav-item>
         <b-nav-item :to="{ name: 'document-list' }">Documents</b-nav-item>
         <b-nav-item :to="{ name: 'refuel-list' }">Refuel</b-nav-item>
+        <b-nav-item :to="{ name: 'refuel-input' }">Refuel New</b-nav-item>
         <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
       </b-navbar-nav>
 

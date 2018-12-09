@@ -22,5 +22,9 @@ export default {
   },
   getRefuelRecords() {
     return apiClient.get('/fuel');
+  },
+  postFuelRecord(data) {
+    console.log(data);
+    return apiClient.post('/fuel/submit', data);
   }
 };
