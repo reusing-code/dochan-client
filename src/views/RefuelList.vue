@@ -9,6 +9,8 @@
           slot="costCent"
           slot-scope="data"
         >{{Math.floor(data.value / 100)}}.{{(data.value % 100).toString().padStart(2, '0')}} €</template>
+        <template slot="drivenKM" slot-scope="data">{{data.value}} km</template>
+        <template slot="fuelKG" slot-scope="data">{{data.value}} kg</template>
         <template slot="location" slot-scope="data">
           <a
             v-if="data.value != null"
@@ -32,14 +34,38 @@ export default {
       fields: [
         {
           key: 'date',
+          label: 'Datum',
           formatter: value => {
             var d = new Date(value);
             return d.toLocaleString('de-DE');
           }
         },
-        { key: 'costCent' },
+        { key: 'costCent', label: 'Kosten' },
+        {
+          key: 'drivenKM',
+          label: 'km'
+        },
+        {
+          key: 'fuelKG',
+          label: 'CNG'
+        },
+        {
+          key: 'pricePerKG',
+          label: 'Preis <div class="small">(pro kg)</div>',
+          formatter: (value, key, item) => {
+            return `${(item.costCent / item.fuelKG / 100).toFixed(3)}`;
+          }
+        },
+        {
+          key: 'consumption',
+          label: 'Verbrauch <div class="small">(kg/100km)</div>',
+          formatter: (value, key, item) => {
+            return `${((item.fuelKG / item.drivenKM) * 100).toFixed(2)}`;
+          }
+        },
         {
           key: 'location',
+          label: 'Ort',
           formatter: (value, key, item) => {
             if (item === undefined || item === null) {
               return null;
