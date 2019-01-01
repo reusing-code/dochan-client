@@ -20,6 +20,9 @@
         <b-form-input id="locationInputLat" type="text" v-model="form.lat" required></b-form-input>
         <b-form-input id="locationInputLon" type="text" v-model="form.lon" required></b-form-input>
       </b-form-group>
+      <b-form-group label="km (Benzin):" label-for="ignorekmInput" horizontal>
+        <b-form-input id="ignorekmInput" type="number" v-model="form.ignoreKM" required></b-form-input>
+      </b-form-group>
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
@@ -38,7 +41,8 @@ export default {
         costCent: '',
         fuelKG: '',
         lat: 0,
-        lon: 0
+        lon: 0,
+        ignoreKM: ''
       },
       show: true,
       error: null
@@ -66,8 +70,9 @@ export default {
       result.costCent = parseInt(this.form.costCent, 10);
       result.totalKM = parseInt(this.form.totalKM);
       result.fuelKG = this.form.fuelKG / 100;
+      result.ignoreKM = this.form.ignoreKM;
       APIService.postFuelRecord(result)
-        .then(response => {
+        .then(() => {
           this.error = null;
           this.$router.push({ name: 'refuel-list' });
         })
