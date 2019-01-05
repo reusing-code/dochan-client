@@ -42,7 +42,7 @@ export default {
         fuelKG: '',
         lat: 0,
         lon: 0,
-        ignoreKM: ''
+        ignoreKM: 0
       },
       show: true,
       error: null
