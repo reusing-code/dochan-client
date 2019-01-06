@@ -22,8 +22,11 @@ export default {
       return apiClient.get('/documents');
     }
   },
-  getRefuelRecords() {
-    return apiClient.get('/fuel');
+  getFuelRecords(perPage, page) {
+    return apiClient.get('/fuel?limit=' + perPage + '&page=' + page);
+  },
+  getFuelRecord(id) {
+    return apiClient.get('/fuel/' + id);
   },
   postFuelRecord(data) {
     console.log(data);

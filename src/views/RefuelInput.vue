@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import APIService from '@/services/APIService.js';
 export default {
   data() {
     return {
@@ -71,15 +70,14 @@ export default {
       result.totalKM = parseInt(this.form.totalKM);
       result.fuelKG = this.form.fuelKG / 100;
       result.ignoreKM = this.form.ignoreKM;
-      APIService.postFuelRecord(result)
+
+      this.$store
+        .dispatch('fuel/addRecord', result)
         .then(() => {
-          this.error = null;
+          this.onReset();
           this.$router.push({ name: 'refuel-list' });
         })
-        .catch(error => {
-          this.error = error;
-          console.log('There was an error:', error.response);
-        });
+        .catch(() => {});
     },
     onReset() {
       /* Reset our form values */
