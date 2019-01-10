@@ -94,12 +94,6 @@ export default {
       perPage: 10
     };
   },
-  created() {
-    this.$store.dispatch('fuel/fetchRecords', {
-      perPage: this.perPage,
-      page: this.page
-    });
-  },
   computed: {
     page() {
       return parseInt(this.$route.query.page) || 1;

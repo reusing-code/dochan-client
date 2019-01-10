@@ -39,7 +39,7 @@ export default {
         });
     },
     fetchRecords({ commit, dispatch }, { perPage, page }) {
-      APIService.getFuelRecords(perPage, page)
+      return APIService.getFuelRecords(perPage, page)
         .then(response => {
           commit(
             'SET_FUEL_RECORDS_TOTAL',

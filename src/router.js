@@ -6,10 +6,12 @@ import DocumentList from './views/DocumentList.vue';
 import DocumentSearch from './views/DocumentSearch.vue';
 import RefuelList from './views/RefuelList.vue';
 import RefuelInput from './views/RefuelInput.vue';
+import NProgress from 'nprogress';
+import store from './store/store';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -49,7 +51,17 @@ export default new Router({
       path: '/fuel',
       name: 'refuel-list',
       component: RefuelList,
-      props: true
+      props: true,
+      beforeEnter(routeTo, routeFrom, next) {
+        store
+          .dispatch('fuel/fetchRecords', {
+            perPage: 10,
+            page: parseInt(routeTo.query.page) || 1
+          })
+          .then(() => {
+            next();
+          });
+      }
     },
     {
       path: '/fuel/new',
@@ -59,3 +71,14 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start();
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
+});
+
+export default router;
