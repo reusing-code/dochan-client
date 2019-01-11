@@ -64,8 +64,8 @@ export default {
       );
       var result = {};
       result.date = dateObj.toISOString();
-      result.lat = this.form.lat;
-      result.lon = this.form.lon;
+      result.lat = parseFloat(this.form.lat);
+      result.lon = parseFloat(this.form.lon);
       result.costCent = parseInt(this.form.costCent, 10);
       result.totalKM = parseInt(this.form.totalKM);
       result.fuelKG = this.form.fuelKG / 100;
