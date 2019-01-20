@@ -8,6 +8,7 @@ import RefuelList from './views/RefuelList.vue';
 import RefuelInput from './views/RefuelInput.vue';
 import NProgress from 'nprogress';
 import store from './store/store';
+import NotFound from './views/NotFound.vue';
 
 Vue.use(Router);
 
@@ -68,6 +69,15 @@ const router = new Router({
       name: 'refuel-input',
       component: RefuelInput,
       props: true
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound
+    },
+    {
+      path: '*',
+      redirect: { name: '404' }
     }
   ]
 });
