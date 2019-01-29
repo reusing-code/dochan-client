@@ -8,7 +8,7 @@
         <b-nav-item :to="{ name: 'document-list' }">Documents</b-nav-item>
         <b-nav-item :to="{ name: 'refuel-list' }">Refuel</b-nav-item>
         <b-nav-item :to="{ name: 'refuel-input' }">Refuel New</b-nav-item>
-        <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
+        <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
