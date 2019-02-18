@@ -69,7 +69,7 @@ export default {
       result.costCent = parseInt(this.form.costCent, 10);
       result.totalKM = parseInt(this.form.totalKM);
       result.fuelKG = this.form.fuelKG / 100;
-      result.ignoreKM = this.form.ignoreKM;
+      result.ignoreKM = parseInt(this.form.ignoreKM);
 
       this.$store
         .dispatch('fuel/addRecord', result)
